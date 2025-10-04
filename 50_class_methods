@@ -1,0 +1,29 @@
+
+# If we sepcicify any method as @classmethod it will refer only to the class attribute and are bound to class not to the instance of that class
+
+class Student:
+    school = "Green Valley High"  # Class variable
+
+    def __init__(self, name):
+        self.name = name
+
+    @classmethod
+    def change_school(cls, new_name):
+        cls.school = new_name  # modifies class variable
+
+    def show(self):
+        print(f"{self.name} studies at {self.school}")
+
+
+# Create students
+s1 = Student("Nafeesa")
+s2 = Student("Amal")
+
+s1.show()  # Green Valley High
+s2.show()  # Green Valley High
+
+# Change school using class method
+Student.change_school("Riverdale Academy")
+
+s1.show()  # Riverdale Academy
+s2.show()  # Riverdale Academy
